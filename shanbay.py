@@ -45,8 +45,9 @@ if json_r['status_code'] == 0:
    for new in news:
        print '--------------'
        if i >= 2:
-           r = s.post(checkin_url, headers = headers) 
-           print "return mgs is :", r.json()
+           checkin_r = s.post(checkin_url, headers = headers) 
+           checkin_json = checkin_r.json() 
+           print "return mgs is :", checkin_json['data']
            break
        if new['finished']:
            print "Readed..."
@@ -66,7 +67,7 @@ if json_r['status_code'] == 0:
        print read_r, read_r.text
        if read_r.json()['status_code'] == 0:
            i += 1
-           print 'Finnishd reading.'
+           print 'Finnish reading.'
            time.sleep(3)
        else:
            print 'Reading failed.'
